@@ -21,13 +21,16 @@ circuitpython code for the neotrinkey
 * neonim.py - nim game, uses ncount.py
 * orbit.py - "solar system" - dot moves around, faster/slower- uses ncount.py
 * prt.py - support module adding HID printing
+* sfquote.py - deliver Trek, Yoda quotes
 * sfwords.py - another wordlist for diceware.py
 * starships.py - print random SF story
 * tamagotchi.py - "tamagotchi" program
 * trek.py - simple star trek game
+* trekquotes - star trek quotes for sfquote.py
 * verses.py - morse bible verses
 * verses2.py- more morse bible verses
 * words.py - diceware reduced wordset
 * words8k.py - full (unusable) diceware wordset.
+* yoda-quotes - quotes from yoda for sfquote.py
 
 
