@@ -1,4 +1,4 @@
-dwords = ["abacus",
+words = ["abacus",
 "absently",
 "amount",
 "amperage",
