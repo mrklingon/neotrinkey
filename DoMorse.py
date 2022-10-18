@@ -1,11 +1,11 @@
 from morse import *
 
-alphabet = "abcdefghijklmnopqrstuvwxyz"
-message1 = "Live long and prosper!"
-message2 = "May the force be with you!"
-message3 = "Never give up, never surrender!"
+message1 = "abcdefghijklmnopqrstuvwxyz"
+message2 = "Live long and prosper!"
+message3 = "May the force be with you!"
+message4 = "Never give up, never surrender!"
 
-texts = [alphabet,message1,message2,message3]
+texts = [message1,message2,message3,message4]
 
 Done  = False
 
@@ -33,6 +33,7 @@ while not Done:
 
     if val == 2: #display message in Morse when touching "2"
         docode(texts[count])
+        compthink() #indicates end of message
 
     time.sleep(.2)
 
