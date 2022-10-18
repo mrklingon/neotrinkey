@@ -4,14 +4,7 @@ import random
 import board
 import neopixel
 import random
-import touchio
 
-REPL = False
-
-
-
-touch1 = touchio.TouchIn(board.TOUCH1)
-touch2 = touchio.TouchIn(board.TOUCH2)
 
 
 dc = (0,0,40)
