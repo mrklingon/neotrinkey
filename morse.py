@@ -4,15 +4,19 @@ import random
 import board
 import neopixel
 import random
+import touchio
 
+# set up touch for input
+touch1 = touchio.TouchIn(board.TOUCH1)
+touch2 = touchio.TouchIn(board.TOUCH2)
 
-
-dc = (0,0,40)
-dtc= (0,40,0)
+#define dash, dot, blank and "space" for Morse code
+dc = (0,0,40) #dash is blue
+dtc= (0,40,0) #dot is green
 blank = (0,0,0)
-space = (10,0,15)
+space = (10,0,15) #space is purple
 
-
+#set up pixels
 pixels = neopixel.NeoPixel(board.NEOPIXEL, 4, auto_write=False)
 
 
@@ -33,7 +37,7 @@ MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
    '?':'..--..', '/':'-..-.', '-':'-....-',
    '(':'-.--.', ')':'-.--.-'
 }
-def encryption(message):
+def encryption(message): #recode text message in morse code
    my_cipher = ''
    for myletter in message:
        try:
@@ -63,7 +67,7 @@ purple = (20,0,30)
 
 colors = [pink,gold,blue,orange,green,red,paleblue,white,purple]
 
-def docolor(color):
+def docolor(color): #show a color  briefly
     for i in range(4):
         pixels[i] = color
 
@@ -77,7 +81,7 @@ def docolor(color):
     pixels.show()
 
 
-def blinknum(num,color):
+def blinknum(num,color): #count out a number in a color
     for i in range(num):
         docolor(color)
         time.sleep(.25)
@@ -85,7 +89,7 @@ def blinknum(num,color):
 
 
 #dospace
-def dospace():
+def dospace(): # show space for Morse text
    pixels[0] = space
    pixels[1]= space
    pixels[2] = blank
@@ -101,7 +105,7 @@ def dospace():
    time.sleep(.25)
 
 #dot
-def dot():
+def dot(): # show dot for Morse
    pixels[0] = blank
    pixels[1]= blank
    pixels[2] = blank
@@ -116,7 +120,7 @@ def dot():
    time.sleep(.25)
 
 #dash
-def dash():
+def dash(): # show dash for Morse
 
    pixels[0] = blank
    pixels[1]= blank
@@ -131,7 +135,7 @@ def dash():
    time.sleep(.25)
    pixels.show()
 
-def blinkcode(code):
+def blinkcode(code): #blink out morse code 
     for chr in code:
         if (chr == "-"):
             dash()
@@ -142,18 +146,13 @@ def blinkcode(code):
         else:
             time.sleep(.25)
 
-def docode(text):
+def docode(text): # display given text in Morse code
     print (text.upper())
     print (encryption(text.upper()))
     blinkcode(encryption(text.upper()))
 
-def typemsg(text):
-    code = text
-    print (code)
-    keyboard_layout.write(code + "\n")
-    time.sleep(.25)
 
-
-def compthink():
+def compthink(): #blink out all the colors when computer "thinking"
     for clr in colors:
         blinknum(1,clr)
+
