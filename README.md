@@ -2,6 +2,7 @@
 circuitpython code for the neotrinkey
 
 * alphaj316.py - morse code of Bible verses. "1" selects, "2" plays verse; uses morse.py
+* boggle.py - create super big boggle matrix
 * cards.py - simulated deck of cards. uses ncount.py to show binary number 1-13 for card
 * complex.py - support module to provide complex number math for mandelbrotx.py
 * cosmos.py - "stars" and wandering around
