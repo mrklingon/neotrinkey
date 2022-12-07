@@ -159,7 +159,9 @@ def Extinct():
         tot = tot + cells[i]
     
     if tot == 0: #extinct!
-            
+        doRed()
+        doRed()
+        doRed()
         print ("Extinction reached!!")
         fixRule()
         doRand() #regenerate!
@@ -198,6 +200,8 @@ def fixRule():
         Rule[i] = SRule[i]
 
 def setRule(rn):
+    doBlue()
+    doBlue()
     for i in range(8):
         Rule[i] = RuleSets[rn][i]
 
@@ -250,6 +254,8 @@ while True:
             if ruleNum > 3:
                 ruleNum = 0
             if ruleNum == 3:
+                green()
+                green()
                 changeRule()
                 print(Rule)
             else:
@@ -273,4 +279,5 @@ while True:
         Val = 0
         
     Val = 0
+
 
