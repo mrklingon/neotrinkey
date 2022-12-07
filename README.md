@@ -16,6 +16,7 @@ circuitpython code for the neotrinkey
 * laby.py - labyrinth program
 * lca.py - linear cellular automata
 * lcang.py -lca.py continuous run; start/stop with "1", random set with "2"
+* lcang2.py -lca.py continuous run; start/stop with "1" -changes rule sets, random set with "2"; detects extinction
 * magicquest.py - print random fantasy story
 * mandelbrotx.py - print mandelbrot set 
 * mastermind.py - mastermind game
