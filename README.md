@@ -17,6 +17,7 @@ circuitpython code for the neotrinkey
 * lca.py - linear cellular automata
 * lcang.py -lca.py continuous run; start/stop with "1", random set with "2"
 * lcang2.py -lca.py continuous run; start/stop with "1" -changes rule sets, random set with "2"; detects extinction
+* lsaber.py - (touch 2) ignite/douse "saber" with random crystal (touch 1)
 * magicquest.py - print random fantasy story
 * mandelbrotx.py - print mandelbrot set 
 * mastermind.py - mastermind game
@@ -26,6 +27,7 @@ circuitpython code for the neotrinkey
 * neonim.py - nim game, uses ncount.py
 * orbit.py - "solar system" - dot moves around, faster/slower- uses ncount.py
 * prt.py - support module adding HID printing
+* saber.py - (touch 2) light "saber" with random crystal (touch 1)
 * sfquote.py - deliver Trek, Yoda quotes
 * sfwords.py - another wordlist for diceware.py
 * starships.py - print random SF story
