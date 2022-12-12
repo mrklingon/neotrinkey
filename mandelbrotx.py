@@ -98,7 +98,6 @@ for row in range(Y):
         x, y = (-2 + dx * col), (2 - dy * row)
         c = [x, y]
         rwt = rwt + mandelbrotTest(c)
-    keyboard_layout.write(rwt + "\n")
-    prt(rwt)
+        prt(rwt)
 
 
