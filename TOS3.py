@@ -74,10 +74,45 @@ def deck5():
       prt("You can't go that way.",REPL)
 
 def chapel():
-    prt("nice chapel",REPL)
+    prt("You are in the Chapel",REPL)
+    while True:
+        prt("You can open the Bible, Sit in a pew, Kneel or eXit\n>",REPL)
+        a = intpt(["b","s","k","x"])
+        if a == "x":
+          return
+        elif a == "b":
+            verses= ["The LORD is my shepherd....","I can do all things through Christ...","Thou wilt keep him in pefect peace..."]
+            prt(random.choice(verses),REPL)
+            compthink()
+                
+        elif a == "s":
+            prt("You sit and meditate. ",REPL)
+            compthink()
+        elif a == "k":
+            prt("You kneel and pray. ",REPL)
+            compthink()
+        else:
+          prt("You can't go that way.",REPL)
 
 def mess():
-    prt("yum!",REPL)
+    prt("You are in the Chapel",REPL)
+    while True:
+        prt("You can get some Coffee, grab some Food or eXit\n>",REPL)
+        a = intpt(["c","f","x"])
+        if a == "x":
+          return
+        elif a == "c":
+            coffee= ["a latte","a decaf","a frappucino"]
+            prt("you get " + random.choice(coffee),REPL)
+            compthink()
+            
+        elif a == "f":
+            food= ["some plo meek soup","a salad","a steak"]
+            prt("you get " + random.choice(food),REPL)
+            compthink()
+        else:
+            prt("You can't go that way.",REPL)
+            prt("yum!",REPL)
 
 def deck6():
   prt("You are on deck6",REPL)
