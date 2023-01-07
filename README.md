@@ -9,6 +9,7 @@ circuitpython code for the neotrinkey
 * diceware.py - diceware, provides pass phrase with reduced wordlist (words.py)
 * diceTran.py - variation of diceware.py that uses "tran" file to translate Klingon and Mando'a passphrases
 * flashlight.py - astro flashlight red or white light
+* intput.py - touch input for programs
 * john316.py - morse code of Bible verses; no input
 * kaleid.py - simple kaleidoscope
 * kjohn316.py - klingon version of john316.py
@@ -32,6 +33,7 @@ circuitpython code for the neotrinkey
 * sfwords.py - another wordlist for diceware.py
 * starships.py - print random SF story
 * tamagotchi.py - "tamagotchi" program
+* TOS3.py - text nav (using copy of intput.py) of Enterprise
 * tran - translation vocab for diceTran.py
 * trek.py - simple star trek game
 * trekquotes - star trek quotes for sfquote.py
