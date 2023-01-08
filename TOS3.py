@@ -47,20 +47,22 @@ def bridge():
 def turbo():
   prt("You are in the turbolift",REPL)
   while True:
-    prt("You can go to decks 1, 5, or 6.\n>",REPL)
-    a=intpt(["1","5","6"])
+    prt("You can go to decks 1, 5, 7, or 13.\n>",REPL)
+    a=intpt(["1","6","7","13"])
     if a == "1":
       return
-    elif a == "5":
-      deck5()
+    elif a == "7":
+      deck7()
     elif a == "6":
       deck6()
+    elif a == "13":
+      deck13()
     else:
       prt("You can't go that way.",REPL)
 
 
-def deck5():
-  prt("You are on deck5",REPL)
+def deck6():
+  prt("You are on deck6",REPL)
   while True:
     prt("You can go to the mess, the chapel or the turbolift.\n>",REPL)
     a = intpt(["m","c","t"])
@@ -114,8 +116,8 @@ def mess():
             prt("You can't go that way.",REPL)
             prt("yum!",REPL)
 
-def deck6():
-  prt("You are on deck6",REPL)
+def deck7():
+  prt("You are on deck7",REPL)
   while True:
     prt("You can go to Sickbay or seCurity or the turbolift.\n>",REPL)
     a=intpt(["s","c","t"])
@@ -133,6 +135,23 @@ def security():
     
 def sickbay():
     prt("I feel better already!",REPL)
+
+def deck13():
+  prt("You are on deck13",REPL)
+  while True:
+    prt("You can go to the observation lounge or turbolift.\n>",REPL)
+    a=intpt(["o","t"])
+    if a == "t":
+      return
+    elif a == "o":
+      observation()  
+    else:
+      prt("You can't go that way.",REPL)
+      
+def observation():
+    prt("look at those stars go by!!!",REPL)
+    compthink()
     
 bridge()
+
 
