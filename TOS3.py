@@ -97,7 +97,7 @@ def chapel():
           prt("You can't go that way.",REPL)
 
 def mess():
-    prt("You are in the Chapel",REPL)
+    prt("You are in the Mess",REPL)
     while True:
         prt("You can get some Coffee, grab some Food or eXit\n>",REPL)
         a = intpt(["c","f","x"])
@@ -149,7 +149,17 @@ def deck13():
       prt("You can't go that way.",REPL)
       
 def observation():
+    stars = ""
+    for i in range(4):
+        for x in range(25):
+            if random.randrange(10)>6:
+                stars = stars+"*"
+            else:
+                stars = stars+" "
+        stars = stars+"\n"
+        
     prt("look at those stars go by!!!",REPL)
+    prt(stars,REPL)
     compthink()
     
 bridge()
