@@ -8,6 +8,7 @@ circuitpython code for the neotrinkey
 * cosmos.py - "stars" and wandering around
 * diceware.py - diceware, provides pass phrase with reduced wordlist (words.py)
 * diceTran.py - variation of diceware.py that uses "tran" file to translate Klingon and Mando'a passphrases
+* drdroid.py - simple "doctor" program.
 * flashlight.py - astro flashlight red or white light
 * intput.py - touch input for programs
 * john316.py - morse code of Bible verses; no input
