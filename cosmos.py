@@ -28,12 +28,19 @@ dr = 0
 xpos = 0
 ypos = 0 
 
+n1 = ["Ta","En","Co","Ma","Ka","Sa"]
+n2 = ["no","la","ne","nt","ru","ym","ah","po","iz","yu","er"]
+
 def initcosmos():
     for i in range(cosdiam*cosdiam):
         if random.randrange(12) >7 :
             cosmos.append(random.randrange(6)+1)
         else:
             cosmos.append(0)
+def mkname(x,y,c):
+    random.seed(x+y+c)
+    nm = random.choice(n1)+random.choice(n2)+random.choice(n2)
+    return nm
 
 def recosmos():
     for i in range(cosdiam*cosdiam):
@@ -48,6 +55,8 @@ def voyage():
         time.sleep(.25)
 
 def vpic(x,y):
+    if cosmos[x%cosdiam + ((y%cosdiam)*cosdiam)]>0:
+        print(mkname(x,y,cosmos[x%cosdiam + ((y%cosdiam)*cosdiam)]))
     return cosmos[x%cosdiam + ((y%cosdiam)*cosdiam)]
 
 def showpane(x,y):
@@ -83,8 +92,9 @@ def chgdir():
 
 initcosmos()
 
-quit = 0 
+quit = 0
 showpane(0,0)
+
 while quit == 0:
     value = 0
     if touch1.value:
@@ -112,3 +122,4 @@ while quit == 0:
         voyage()
         
     
+
