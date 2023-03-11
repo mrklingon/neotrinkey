@@ -21,7 +21,7 @@ red = (20,0,0)
 
 rbow = [blank,red,pink,orange,gold,green,blue]
 cosmos = []
-cosdiam = 30
+cosdiam = 40
 vectors = [[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]]
 dr = 0
 
@@ -107,6 +107,8 @@ while quit == 0:
             time.sleep(.25)
         
     if value ==3:
-        quit = 1
+        binnum(1,green)
+        binnum(1,red)
+        voyage()
         
     
