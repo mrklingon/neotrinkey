@@ -84,7 +84,7 @@ def chgdir():
 initcosmos()
 
 quit = 0 
-
+showpane(0,0)
 while quit == 0:
     value = 0
     if touch1.value:
