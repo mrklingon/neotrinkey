@@ -23,6 +23,7 @@ Val = 0
 
 def boom():
     global score
+    global missles
     score = score + 1
     blinknum(score,gold)
     print("Boom!")
@@ -31,6 +32,11 @@ def boom():
         compthink()
         blinknum(1,blank)
         score = 0
+        missles = 5 + random.randrange(6)
+        
+
+missles = 10
+
 while True:
 
     ship(place[random.randrange(2)])
@@ -46,6 +52,7 @@ while True:
         touched = time.monotonic()
 
     if Val == 1:
+        missles = missles - 1
         pixels[2]= red
         pixels.show()
         time.sleep(.2)
@@ -53,6 +60,7 @@ while True:
             boom()
         else:
             print("miss!")
+            blinknum(1,paleblue)
         pixels[2]=blank
         pixels.show()
     if Val == 2: 
@@ -63,8 +71,15 @@ while True:
             boom()
         else:
             print("miss!")
+            blinknum(1,paleblue)
         pixels[1]=blank
         pixels.show()
     Val = 0
+    if missles <= 0:
+        print("you lost!")
+        blinknum(gold,score)
+        score = 0
+        missles = 5 + random.randrange(6)
+        
     clear()
 
