@@ -24,6 +24,7 @@ Val = 0
 def boom():
     global score
     global missles
+    global misses
     score = score + 1
     blinknum(score,gold)
     print("Boom!")
@@ -33,9 +34,10 @@ def boom():
         blinknum(1,blank)
         score = 0
         missles = 5 + random.randrange(6)
-        
+        misses = 0
 
-missles = 10
+missles = 7
+misses = 0
 
 while True:
 
@@ -60,7 +62,8 @@ while True:
             boom()
         else:
             print("miss!")
-            blinknum(1,paleblue)
+            misses = misses + 1
+            blinknum(misses,paleblue)
         pixels[2]=blank
         pixels.show()
     if Val == 2: 
@@ -71,14 +74,16 @@ while True:
             boom()
         else:
             print("miss!")
-            blinknum(1,paleblue)
+            misses = misses + 1
+            blinknum(misses,paleblue)
         pixels[1]=blank
         pixels.show()
     Val = 0
-    if missles <= 0:
+    if missles <= 0 or misses >= 5:
         print("you lost!")
-        blinknum(gold,score)
+        blinknum(score,gold)
         score = 0
+        misses = 0
         missles = 5 + random.randrange(6)
         
     clear()
