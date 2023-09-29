@@ -17,7 +17,7 @@ blank = (0,0,0)
 space = (10,0,15) #space is purple
 
 #set up pixels
-pixels = neopixel.NeoPixel(board.NEOPIXEL, 4, auto_write=False)
+pixels = neopixel.NeoPixel(board.NEOPIXEL, 4, auto_write=True)
 
 
 # Dictionary representing the morse code chart
