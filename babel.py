@@ -12,7 +12,8 @@ from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
 from adafruit_hid.keycode import Keycode
 
-repl = False
+repl = True
+debug = False
 
 
 keyboard = Keyboard(usb_hid.devices)
@@ -30,8 +31,8 @@ def outPut(text):
         print (text)
     else:
         keyboard_layout.write(text + "\n")
-        
-        
+
+
 def setWookie():
     outPut("Wookie")
     blinknum(1,green)
@@ -42,7 +43,7 @@ def setWookie():
     vowels = "OUA"
     consonants = "WWRRRHHHWWWRR"
     rules = ["CvvvvC", "CVC", "VVCV", "VCVVVVC","VCVVC"]
-    
+
 def setKlin():
     outPut("Klingon")
     blinknum(2,red)
@@ -93,11 +94,11 @@ def setRom():
 
 def mkword():
     rule = rules[random.randrange(len(rules))]
-    print(rule)
+    if debug: print(rule)
     word = ""
     for i in range(len(rule)):
         r=rule[i]
-        print(rule[i])
+        if debug: print(rule[i])
         if r == "V":
             word = word + pickChar(vowels)
         if r == "v":
@@ -108,12 +109,12 @@ def mkword():
         if r == "c":
             if (random.randrange(100)>49):
                 word = word + pickChar(consonants)
-                
+
     return word
-        
+
 def pickChar(inp):
     return (inp[random.randrange(len(inp))])
-    
+
 def mkPhrase():
     sent = ""
     for i in range(random.randrange(10)+1):
@@ -128,46 +129,45 @@ done = False
 
 while not done:
     Val = 0
-    
+
     if touch1.value:
         blinknum(1,pink)
         Val = Val + 1
-        
+
     if touch2.value:
         blinknum(2,gold)
         Val = Val + 2
-    
+
     if Val == 3:
         done = True
         time.sleep(.25)
-        
+
     if Val == 1:
         lang = lang + 1
         if lang > 5:
             lang = 1
-            
+
         if lang == 1:
             setWookie()
-        
+
         if lang == 2:
             setKlin()
-        
+
         if lang == 3:
             setVul()
-        
+
         if lang == 4:
             setMando()
-        
+
         if lang == 5:
             setRom()
-            
+
         time.sleep(.25)
-    
+
     if Val == 2:
         phr = mkPhrase()
-        print(phr)
+        if debug: print(phr)
         outPut(phr)
         time.sleep(.25)
-    
-    
+
 
