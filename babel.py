@@ -51,8 +51,8 @@ def setKlin():
     global consonants
     global rules
 
-    vowels = "aeiouy"
-    consonants = "bcDghjlmnpqQStvwy'"
+    vowels = "aeIouy"
+    consonants = "bcDgHjlmnpqQStvwy'"
     rules = ["CVVC", "CVC", "CCVVC", "CVVC","CV"]
 
 def setVul():
@@ -93,6 +93,7 @@ def setRom():
 
 
 def mkword():
+    global lang
     rule = rules[random.randrange(len(rules))]
     if debug: print(rule)
     word = ""
@@ -105,11 +106,17 @@ def mkword():
             if (random.randrange(100)>49):
                 word = word + pickChar(vowels)
         if r == "C":
-            word = word + pickChar(consonants)
+            con = pickChar(consonants)
+            if (con == "g" and lang == 2):
+                con = "gh"
+            word = word + con
         if r == "c":
             if (random.randrange(100)>49):
-                word = word + pickChar(consonants)
-
+                con = pickChar(consonants)
+                if (con == "g" and lang == 2):
+                    con = "gh"
+                word = word + con
+ 
     return word
 
 def pickChar(inp):
@@ -169,5 +176,3 @@ while not done:
         if debug: print(phr)
         outPut(phr)
         time.sleep(.25)
-
-
