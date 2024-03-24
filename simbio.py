@@ -3,8 +3,9 @@ import random
 import neopixel
 import board
 import touchio
-from morse import *
-
+# set up touch for input
+touch1 = touchio.TouchIn(board.TOUCH1)
+touch2 = touchio.TouchIn(board.TOUCH2)
 #Define colors
 pink = (20,5,5)
 gold = (25, 20, 5)
@@ -18,30 +19,23 @@ white = (20,20,20)
 violet = (20,0,20)
 
 colors = [red,orange,pink,blank,green,blue,violet]
+#set up pixels
+pixels = neopixel.NeoPixel(board.NEOPIXEL, 4, auto_write=True)
 
 Psym = ["@","o","."," ","'",":","#"]
 cosmos = []
 c1 = []
 c2 = []
 
-for i in range(101):
+for i in range(301):
     cosmos.append(0)
     c1.append(0)
     c2.append(0)
 
 def create():
     global cosmos
-    for x in range(100):
+    for x in range(300):
         cosmos[x] = random.randrange(-3,3)
-
-def stable1():
-    global cosmos
-    for x in range(101):
-        if x%2 >0:
-            cosmos[x]=1
-        else:
-            cosmos[x]=-1
-
 
 
 
@@ -72,25 +66,25 @@ def checkWorld():
 def doGen():
     global cosmos, c1, c2
 
-    for i in range(100):
+    for i in range(300):
         c1[i]=0
         c2[i]=0
 
-    for i in range(100):
+    for i in range(300):
         v = cosmos[i]
-        if (v+i)>=0 and (v+i)<= 100:
+        if (v+i)>=0 and (v+i)<= 300:
             c1[v+i] = v
             n=v+i
             if cosmos[n] != 0:
-                if (n+v) >=0 and (n+v)<=100:
+                if (n+v) >=0 and (n+v)<=300:
                     c2[n+v] = cosmos[n]
-    for i in range(100):
+    for i in range(300):
         cosmos[i]=0
-    for i in range(100):
+    for i in range(300):
         if (c1[i]!=0):
             cosmos[i]= c1[i]
 
-    for   i in range(100):
+    for   i in range(300):
         if (c2[i]!=0):
             cosmos[i]= c2[i]
 
