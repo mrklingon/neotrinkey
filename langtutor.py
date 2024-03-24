@@ -4,7 +4,6 @@ import neopixel
 import board
 import touchio
 from prt import *
-#from morse import *
 from wise import *
 
 # set up touch for input
@@ -47,6 +46,10 @@ def blinknum(num,color): #count out a number in a color
         time.sleep(.25)
 
 
+
+def compthink(): #blink out all the colors when computer "thinking"
+    for clr in colors:
+        blinknum(1,clr)
 
 lnum = 2
 langs = ["klingon","vulcan","mandoa"]
