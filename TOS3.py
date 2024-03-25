@@ -47,7 +47,7 @@ def bridge():
 def turbo():
   prt("You are in the turbolift",REPL)
   while True:
-    prt("You can go to decks 1, 5, 7, or 13.\n>",REPL)
+    prt("You can go to decks 1, 6, 7, or 13.\n>",REPL)
     a=intpt(["1","6","7","13"])
     if a == "1":
       return
