@@ -4,7 +4,7 @@ import board
 import touchio
 import time
 #deck info from https://memory-alpha.fandom.com/wiki/Constitution_class_decks
-
+#dests info from https://exoplanets.nasa.gov/news/1378/top-10-star-trek-destinations-chosen-by-nasa-scientists/
 # set up touch for input
 touch1 = touchio.TouchIn(board.TOUCH1)
 touch2 = touchio.TouchIn(board.TOUCH2)
@@ -51,7 +51,7 @@ def docolor(color): #show a color  briefly
 def blinknum(num,color): #count out a number in a color
     for i in range(num):
         docolor(color)
-        time.sleep(.25)
+        time.sleep(.1)
 
 
 def compthink(): #blink out all the colors when computer "thinking"
@@ -62,13 +62,21 @@ def compthink(): #blink out all the colors when computer "thinking"
 
 for i in range(file_len("decks")):
     dk = str(i+1)+": "+wisdom(i,"decks")
+    dk = dk.rstrip()
     prt(dk,REPL)
-    time.sleep(.25)
+
+def PickDest():
+    dest = wisdom(random.randrange(file_len("dests")),"dests").rstrip()
+    ETA = random.randrange(3,8)
+    return (dest,ETA)
+
 
 Deck = 0 # start at bridge
+(dest,ETA) = PickDest()
 
+prt (("Ship destination is: " +dest) ,REPL)
 while True:
-    prt ("You are on deck: "+ str(Deck + 1)+ " " + wisdom(Deck,"decks"),REPL)
+    prt (("You are on deck: "+ str(Deck + 1)+ " " + wisdom(Deck,"decks")).rstrip(),REPL)
     compthink()
     val = 0
     while val ==0:
@@ -77,6 +85,12 @@ while True:
             val = val+1
         if touch2.value:
             val = val+2
+    ETA = ETA - 1
+    if ETA <= 0:
+        prt("Arrived at "+dest,REPL)
+        (dest,ETA)=PickDest()
+        prt (("Ship new destination is: " +dest) ,REPL)
+
 
     if val == 1:
         Deck = Deck - 1
