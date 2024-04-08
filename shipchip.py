@@ -5,11 +5,11 @@ import touchio
 import time
 #deck info from https://memory-alpha.fandom.com/wiki/Constitution_class_decks
 #dests info from https://exoplanets.nasa.gov/news/1378/top-10-star-trek-destinations-chosen-by-nasa-scientists/
-# set up touch for input
+pixels = neopixel.NeoPixel(board.NEOPIXEL, 4, auto_write=True)
 touch1 = touchio.TouchIn(board.TOUCH1)
 touch2 = touchio.TouchIn(board.TOUCH2)
-from prt import *
 
+from prt import *
 REPL = True
 prt("Trek",REPL)
 from wise import *
@@ -28,9 +28,6 @@ paleblue = (0,0,1)
 white = (20,20,20)
 purple = (20,0,30)
 
-
-#set up pixels
-pixels = neopixel.NeoPixel(board.NEOPIXEL, 4, auto_write=True)
 
 colors = [pink,gold,blue,orange,green,red,paleblue,white,purple]
 
@@ -55,8 +52,8 @@ def blinknum(num,color): #count out a number in a color
 
 
 def compthink(): #blink out all the colors when computer "thinking"
-    for clr in colors:
-        blinknum(1,clr)
+    for i in range(random.randrange(3,5)):
+        blinknum(1,random.choice(colors))
 
 
 
