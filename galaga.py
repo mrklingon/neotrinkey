@@ -3,15 +3,23 @@ import random
 import neopixel
 import board
 import touchio
-from morse import *
+from ncount import *
 REPL = True
 place = [3,0]
 score = 0
+
+touch1 = touchio.TouchIn(board.TOUCH1)
+touch2 = touchio.TouchIn(board.TOUCH2)
 
 def ship(loc):
     pixels[loc]=green
     pixels.show()
     time.sleep(.14)
+
+
+def compthink(): #blink out all the colors when computer "thinking"
+    for clr in colors:
+        blinknum(1,clr)
 
 def clear():
     for p in place:
@@ -42,7 +50,7 @@ misses = 0
 while True:
 
     ship(place[random.randrange(2)])
-    
+
     if time.monotonic() - touched < 0.15:
         continue
     if touch1.value:
@@ -66,7 +74,7 @@ while True:
             blinknum(misses,paleblue)
         pixels[2]=blank
         pixels.show()
-    if Val == 2: 
+    if Val == 2:
         pixels[1]=red
         pixels.show()
         time.sleep(.2)
@@ -85,6 +93,5 @@ while True:
         score = 0
         misses = 0
         missles = 5 + random.randrange(6)
-        
-    clear()
 
+    clear()
