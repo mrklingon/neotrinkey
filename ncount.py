@@ -16,6 +16,7 @@ blank = (0,0,0)
 grn = (0,20,0)
 green  = (0,20,0)
 red = (20,0,0)
+colors = [pink, gold, blue, orange, green,red,paleblue]
 
 def docolor(color):
     for i in range(4):
