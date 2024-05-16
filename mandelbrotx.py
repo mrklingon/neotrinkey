@@ -1,3 +1,5 @@
+# based on https://github.com/claiire/python-mandelbrot
+# adapted for CircuitPython. Requires complex.py for complex manipulations
 # Renders the Mandelbrot Set in ASCII art. This version of the code
 # runs with Python 3.
 # Claire C.C., 2016
@@ -22,6 +24,9 @@ touch1 = touchio.TouchIn(board.TOUCH1)
 touch2 = touchio.TouchIn(board.TOUCH2)
 
 REPL = True
+
+#REPL True: output goes to REPL
+#REPL False: output goes as if 'typed'
 
 def prt(text):
     if REPL:
@@ -64,8 +69,10 @@ dx = 2 / xMid  # How much each cell represents in the context
 dy = 2 / yMid  # of the complex plane.
 
 Wait = True
-
+ 
 blinknum(3,green)
+
+#touch #2 to start rendering.
 
 while Wait:
     Val = 0
@@ -98,6 +105,4 @@ for row in range(Y):
         x, y = (-2 + dx * col), (2 - dy * row)
         c = [x, y]
         rwt = rwt + mandelbrotTest(c)
-        prt(rwt)
-
-
+    prt(rwt)
