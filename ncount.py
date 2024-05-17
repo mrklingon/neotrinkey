@@ -45,6 +45,5 @@ def binnum(num,color):
             pixels[i] = color
             
     pixels.show()
-    time.sleep(.5)
     
 
