@@ -8,7 +8,7 @@ from ncount import *
 
 touch1 = touchio.TouchIn(board.TOUCH1)
 touch2 = touchio.TouchIn(board.TOUCH2)
-
+# diamonds are gold, clubs are blue, hearts are red, and spades are green
 suits = ["diamonds","clubs","hearts","spades"]
 scolor = [gold,blue,red,green]
 faces =["","ace","deuce", "three","four","five","six","seven","eight","nine","ten", "jack","queen","king"]
