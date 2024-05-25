@@ -38,4 +38,5 @@ def mltCC(cmp1,cmp2):
     U = (A*D) + (B*C)
     return ([T,U])
 
-    
+def mltI(cmp):
+    return ([-cmp[1],cmp[0]])
