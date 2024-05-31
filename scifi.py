@@ -2,14 +2,18 @@ import time
 import random
 import board
 import random
-from morse import *
-from prt import *
+import neopixel
+import random
+import touchio
 
+# set up touch for input
+touch1 = touchio.TouchIn(board.TOUCH1)
+touch2 = touchio.TouchIn(board.TOUCH2)
+pixels = neopixel.NeoPixel(board.NEOPIXEL, 4, auto_write=True)
+
+from prt import *
 REPL = True
 
-
-Planets = ["Senvouter", "Kacanope", "Olryke", "Cungade", "Aorilia", "Zoawei", "Gnocehiri", "Gnetarus", "Trion V49V", "Broria KBO6"]
-ships = ["The Trident", "Kryptoria", "Black Sparrow", "The Tortoise", "Lavanda", "BS Slayer", "ISS Fate", "SC Determination", "LWSS Shade", "SSE Wish Upon a Star"]
 travel = ["travels to", "returns from","orbits","lands at","lifts off from"]
 purpose = ["with supplies", "carrying passengers", "with ancient artifacts", "escaping a battle", "pursuing an enemy"]
 problem = ["and is damaged in an explosion", "and loses power", "and runs out of fuel"]
@@ -19,42 +23,32 @@ twist = ["And then a mysterious message arrives from {alien} {place}.",
          "An urgent emergency message from {place} arrives. The {alien} planet is experiencing an epidemic.",
          "Word comes that the {alien} ambassador has just died on {place}."]
 
-aliens = ["Stezets",
-    "Scuns",
-    "Cuds",
-    "Vrucuins",
-    "Bhisih",
-    "Ahleath",
-    "Dandaeds",
-    "Qat'iet",
-    "Gad",
-    "Nahrins"]
-
-planets = ["Mageinope",
-    "Thotreatune",
-    "Zolinda",
-    "Nilreron",
-    "Uclite",
-    "Notania",
-    "Guapra",
-    "Brozalea",
-    "Gerth NYV",
-    "Strilia Q5OV"]
-
 Done = False
+def file_len(filename):
+    with open(filename) as f:
+        for i, _ in enumerate(f):
+            pass
+    return i + 1
+
+def wisdom(filename):
+    
+    qs = open(filename)
+    for i in range(random.randrange(file_len(filename))+1):
+        quote = qs.readline()
+        quote = quote.rstrip()
+    compthink()
+    qs.close()
+    return (quote.rstrip())
 
 def compthink():
     for i in range(3):
         ind = random.randrange(10)
         pixels.fill((random.randrange(20),random.randrange(50),random.randrange(20)))
-        pixels.show()
         time.sleep(.25)
         pixels.fill((0,0,0))
-        pixels.show()
 ind = 0
 pixels.fill((0,0,50))
-pixels.show()
-place = random.choice(Planets)
+place = wisdom("planets.sf")
 
 while not Done:
     val = 0
@@ -67,19 +61,20 @@ while not Done:
 
     if val == 1:
         compthink()
-        place = random.choice(Planets)
+        place = wisdom("planets.sf")
         prt(place,REPL)
 
     if val == 2:
         compthink()
-        prt(random.choice(ships),REPL)
+        prt(wisdom("ships.sf"),REPL)
         prt(random.choice(travel),REPL)
         prt(place,REPL)
         prt(random.choice(purpose),REPL)
         prt(random.choice(problem),REPL)
         prt(random.choice(solution),REPL)
-        prt(random.choice(twist).format(place=random.choice(planets), alien = random.choice(aliens)),REPL)
+        prt(random.choice(twist).format(place=wisdom("planets.sf"), alien = wisdom("aliens.sf")),REPL)
 
     if val ==3:
         Done = True
-
+    
+    
