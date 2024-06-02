@@ -2,106 +2,48 @@ import time
 import random
 import neopixel
 import random
-from morse import *
+import board
+import neopixel
+import touchio
+
+# set up touch for input
+touch1 = touchio.TouchIn(board.TOUCH1)
+touch2 = touchio.TouchIn(board.TOUCH2)
+pixels = neopixel.NeoPixel(board.NEOPIXEL, 4, auto_write=True)
+
 from prt import *
 
-REPL = False
+REPL = True
+def file_len(filename):
+    with open(filename) as f:
+        for i, _ in enumerate(f):
+            pass
+    return i + 1
 
+def wisdom(filename):
+    
+    qs = open(filename)
+    for i in range(random.randrange(file_len(filename))+1):
+        quote = qs.readline()
+        quote = quote.rstrip()
+    compthink()
+    qs.close()
+    return (quote.rstrip())
+
+
+
+def compthink():
+    for i in range(3):
+        ind = random.randrange(10)
+        pixels.fill((random.randrange(20),random.randrange(50),random.randrange(20)))
+        time.sleep(.25)
+        pixels.fill((0,0,0))
+        
 races = ["human", "elf", "dwarf", "hobbit"]
 classes = ["wizard", "burglar",  "healer", "warrior"]
-names = [
-    "Krargrouk Honorgrog",
-    "Kargroun Shadowbrew",
-    "Vomdoick Emberminer",
-    "Polo Littlefoot",
-    "Leutfrid Baggins",
-    "Fastolph Gardner",
-    "Alen Tormyar",
-    "Ascal Perbanise",
-    "Felaern Tortoris",
-    "Crestiennet of the Night",
-    "Thilrern Derorvo",
-    "Bheksomu Dreinzul",
-    "Khondui Bhugazel",
-    "Averitt the Heroic",
-    "Heimeri of the South",
-]
-
-destination = [
-    "Alterwood Palace",
-    "Corftey Fortress",
-    "Clarn Castle",
-    "Wringcaster Citadel",
-    "The Eternal Haunt",
-    "The Buried Burrows",
-    "The Ethereal Cells  ",
-    "Water Leopard Woods",
-    "Baxpool Covert",
-    "Kirkasing Woodland",
-]
-
-weapons = [
-    "Soulsliver",
-    "Cryptic",
-    "Blackout",
-    "Doomguard",
-    "Windsong Idol",
-    "Thirsting Slicer",
-    "Isolated Copper Sabre",
-    "Pride's Steel Protector",
-    "Aetherius, Quickblade of Eternal Bloodlust",
-    "Treachery, Spine of Justice",
-    "Stinger, Claymore of the Burning Sun",
-    "Barbarian Iron Deflector",
-    "Mournblade, Gift of Ancient Power",
-]
-
-enemy = [
-    "Phasething",
-    "Chaosling",
-    "Rottingstep",
-    "Boulderfang",
-    "Phantomman",
-    "Dreadcrackle",
-    "Soilserpent",
-    "Mornlich",
-    "The Lanky Statue",
-    "The Feathered Bane Jackal",
-    "The Black-Eyed Cinder Spider",
-    "The Tusked Venom Drake",
-]
-
 
 travel = [" travels to", " returns from", " explores within", " gets lost at"]
-treasure = [
-    "Fortune's Horn",
-    "Worship Mirror",
-    "Insanity Boots",
-    "Sanctifying Ark",
-    "Roaring Scepter",
-    "Misty Satchel",
-    "Hailstorm Charm",
-]
 
-forest = [
-    "Misty Bluff Wilds",
-    "Pleasant Brook Grove",
-    "Huge Wilds",
-    "Majestic Wilds",
-    "Short-Tailed Snail Woodland",
-    "Speckled Squirrel Grove",
-    "Faint Wood",
-    "Jagged Covert",
-    "Short-Tailed Treefrog Grove",
-    "Imperial Spider Covert",
-    "Mannear Wilds",
-    "Shipsons Wood",
-    "Alberboia Grove",
-    "Bois de la Camris",
-    "Fort du Bouluon",
-    "Fort de la Carcaveil",
-    "Fort de la Sarmont",
-]
 
 problem = [
     "Suddenly out of {frst} appears a {monster}",
@@ -121,7 +63,7 @@ purpose = ["seeking", "discovering", "losing", "finding"]
 
 
 def player():
-    nm = random.choice(names)
+    nm = wisdom("names.mq")
     rc = random.choice(races)
     cl = random.choice(classes)
     return [nm, rc, cl]
@@ -154,19 +96,19 @@ while not Done:
         compthink()
         prt("The " + Player[1] + " " + Player[2] + " " + Player[0],REPL)
         prt(random.choice(travel),REPL)
-        prt(random.choice(destination),REPL)
-        prt(random.choice(purpose) + " " + random.choice(treasure),REPL)
+        prt(wisdom("destination.mq"),REPL)
+        prt(random.choice(purpose) + " " + wisdom("treasure.mq"),REPL)
         prt(
             random.choice(problem).format(
-                name=Player[0], frst=random.choice(forest), monster=random.choice(enemy)
+                name=Player[0], frst=wisdom("forest.mq"), monster=wisdom("enemy.mq")
             )
         ,REPL)
         prt(
             random.choice(solution).format(
                 name=Player[0],
-                forest=random.choice(forest),
-                monster=random.choice(enemy),
-                weapon=random.choice(weapons),
+                forest=wisdom("forest.mq"),
+                monster=wisdom("enemy.mq"),
+                weapon=wisdom("weapon.mq"),
             )
         ,REPL)
 
