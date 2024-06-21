@@ -4,6 +4,8 @@ import neopixel
 import board
 import touchio
 from ncount import *
+from prt import * 
+REPL = True
 
 grn = (0,20,0)
 red = (20,0,0)
@@ -29,7 +31,7 @@ def cell(x,y):
     return (y*USize)+x
 
 def showU():
-    print("==========")
+    prt("==========",REPL)
     for y in range(USize):
         row = ""
         for x in range(USize):
@@ -37,11 +39,11 @@ def showU():
                 row = row+"*"
             else:
                 row = row + " "
-        print(row)
+        prt(row,REPL)
 
 hood = [-1,1,-10,10,-11,-9,9,11]
 
-bar = [4,14,24,34,44,54,64,74,84,94] #bar
+bar = [42,43,44,45,46,47] #bar
 glider = [41,42,43,33,22]
 rpent = [44,45,35,55,56]
 def dopat(pat):
@@ -55,19 +57,16 @@ def nbr(s):
     nc = 0
     for delta in hood:
         ss = s + delta
-#        print(delta)
         if ss < 0:
             ss = ss + (USize*USize)
         if ss >= (USize*USize):
             ss = ss - (1+ (USize*USize))
-#            print("x"+str(ss))
         nc = nc + universe[ss]
         
     return nc
 
 def gen():
     for i in range(USize*USize):
-#        print (i)
         nc = nbr(i)
         if nc < 2:
             newU[i]=0
@@ -81,18 +80,23 @@ def gen():
         universe[i]=newU[i]
 
 
-for p in [bar,glider,rpent]:
-    dopat(p)
+def rungens(num):
     showU()
-    for i in range (20):
+    for i in range (num):
         time.sleep(1)
         gen()
         showU()
     compthink()
+
+compthink()
+time.sleep(2)
+for p in [bar,glider,rpent]:
+    dopat(p)
+    showU()
+    rungens(10)
 randU()
 showU()
-for i in range(20):
-    time.sleep(1)
-    gen()
-    showU()
+rungens(10)
 compthink()
+
+
