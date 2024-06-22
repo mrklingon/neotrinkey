@@ -21,6 +21,13 @@ def randU():
 def cell(x,y):
     return (y*USize)+x
 
+def xycell(cell):
+    y = int(cell/10)
+    x = cell - (y*10)
+    return [x,y]
+
+
+
 def showU():
     print("==========")
     for y in range(USize):
@@ -32,9 +39,9 @@ def showU():
                 row = row + " "
         print(row)
 
-hood = [-1,1,-10,10,-11,-9,9,11]
+hood = [[-1,0],[1,0],[0,-1],[0,1],[-1,-1],[1,-1],[-1,1],[1,1]]
 
-bar = [42,43,44,45,46,47] #bar
+bar = [40,41,42,43,44,45,46,47,48,49] #bar
 glider = [41,42,43,33,22]
 rpent = [44,45,35,55,56]
 def dopat(pat):
@@ -47,13 +54,18 @@ def dopat(pat):
 def nbr(s):
     nc = 0
     for delta in hood:
-        ss = s + delta
-#        print(delta)
-        if ss < 0:
-            ss = ss + (USize*USize)
-        if ss >= (USize*USize):
-            ss = ss - (1+ (USize*USize))
-#            print("x"+str(ss))
+        [x,y]=xycell(s)
+        x=x+delta[0]
+        y=y+delta[1]
+        if x > 9:
+            x=0
+        if x < 0:
+            x=9
+        if y > 9:
+            y=0
+        if y < 0:
+            y=9
+        ss = cell(x,y)
         nc = nc + universe[ss]
         
     return nc
