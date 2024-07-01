@@ -4,7 +4,7 @@ import neopixel
 import board
 import touchio
 from ncount import *
-from prt import * 
+from prt import *
 REPL = True
 
 grn = (0,20,0)
@@ -19,14 +19,16 @@ newU = []
 for i in range(USize*USize):
     universe.append(0)
     newU.append(0)
-    
+
 def randU():
+    prt("Random",REPL)
+    prt("==========================",REPL)
     for i in range(USize*USize):
         if random.randrange(100)>60:
             universe[i]=1
         else:
             universe[i]=0
-            
+
 def cell(x,y):
     return (y*USize)+x
 
@@ -48,13 +50,16 @@ def showU():
 
 hood = [[-1,0],[1,0],[0,-1],[0,1],[-1,-1],[1,-1],[-1,1],[1,1]]
 
-bar = [40,41,42,43,44,45,46,47,48,49] #bar
-glider = [41,42,43,33,22]
-rpent = [44,45,35,55,56]
+bar =["bar",[5,15,25,35,45,55,65,75,85,95]] #bar
+blinkers = ["blinkers",[2,12,22,36,37,38,62,63,64,77,87,97]]
+glider = ["glider",[41,42,43,33,22]]
+rpent = ["rpent",[44,45,35,55,56]]
 def dopat(pat):
+    prt(pat[0],REPL)
+    prt ("===============",REPL)
     for i in range(100):
         universe[i] = 0
-    for i in pat:
+    for i in pat[1]:
         universe[i] = 1
 
 def nbr(s):
@@ -101,7 +106,7 @@ def rungens(num):
 
 compthink()
 time.sleep(2)
-for p in [bar,glider,rpent]:
+for p in [blinkers,bar,glider,rpent]:
     dopat(p)
     showU()
     rungens(10)
