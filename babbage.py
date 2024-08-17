@@ -14,12 +14,12 @@ enter = 1
 add = 2
 subtract = 3
 pop = 4
-compthink()
-stack = [0,0,0,0,0,0,0,0]
+compthink() #blink some lights to show we started
+stack = [0,0,0,0,0,0,0,0]  #bigger than needed
 sp = 0
 
 states = [wait,enter,add, subtract, pop]
-nstates = ["wait", "enter","add","subtract","pop"]
+nstates = ["wait", "enter","add","subtract","pop"] #name of states
 state = wait
 
 def enternum():
@@ -68,7 +68,7 @@ while not Done:
         v1 = stack.pop(0)
         v2 = stack.pop(0)
 
-        ans = v1 + v2
+        ans = (v1 + v2)%16
         print ("adding " + str(v1) +" + "+str(v2) + " = " + str(ans))
         binnum(ans,blue)
         stack.insert(0,ans)
@@ -81,7 +81,7 @@ while not Done:
         ans = v2 - v1
         if ans < 0:
             ans = ans +16 #clock arithmetic
-        
+
         print ("subtracting " + str(v2) +" - "+str(v1) + " = " + str(ans))
         binnum(ans,blue)
         stack.insert(0,ans)
