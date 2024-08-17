@@ -16,7 +16,7 @@ blank = (0,0,0)
 grn = (0,20,0)
 green  = (0,20,0)
 red = (20,0,0)
-zero = (5,5,5)
+zero = (2,2,2)
 colors = [pink, gold, blue, orange,green,red]
 
 
