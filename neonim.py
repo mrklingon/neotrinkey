@@ -63,7 +63,6 @@ while True:
         print ("computer first")
         
     while total < 10:
-
         if state == computer: #computer turn
             
             binnum(total,orange)
@@ -75,6 +74,7 @@ while True:
             
             total = total + move
             binnum(total,orange)
+            print("total: "+str(total))
             state = human
             
             if total == 10: #computer win
@@ -103,7 +103,9 @@ while True:
                 print ("human move:"+str(move))
                 binnum(total,orange)
                 state = computer
+                print("total: "+str(total))
             
+    
             if Val == 2: #move 1
                 move = 2
                 dohum()
@@ -112,6 +114,7 @@ while True:
                 print ("human move:"+str(move))
                 binnum(total,orange)
                 state = computer
+                print("total: "+str(total))
             if total == 10: #human win    
                 dohum()
                 binnum(total,blue)
@@ -120,3 +123,4 @@ while True:
     time.sleep(5)
     print ("restart")
         
+
