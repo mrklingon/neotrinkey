@@ -56,8 +56,9 @@ def binnum(num,color):
     pixels.show()
     time.sleep(.5)
 
-def digicomp(input,program):
-    compthink()
+def digicomp(input,program,verbose):
+    if verbose:
+        compthink()
     r = program[input]
     binnum(input,red)
     time.sleep(.2)
